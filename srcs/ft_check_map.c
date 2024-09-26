@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:35:33 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/25 17:45:05 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/26 08:44:40 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ static void	check_square(t_game **game)
 	i = 0;
 	j = 0;
 	if ((*game)->width < 5 || (*game)->height < 3)
-	{
-		printf("Error map\n");
-		free((*game)->map);
-		exit(1);
-	}
+		min_width_and_height(game);
 	while ((*game)->map[i])
 	{
 		j++;
@@ -44,18 +40,20 @@ static void	check_square(t_game **game)
 	}
 }
 
-static void	get_with_and_height(t_game **game, int *width, int *height)
+static void	get_with_and_height(t_game **game)
 {
 	int	i;
 
 	i = 0;
+	(*game)->width = 0;
+	(*game)->height = 0;
 	while ((*game)->map[i])
 	{
 		if ((*game)->map[i] == '\n' || (*game)->map[i + 1] == '\0')
 		{
-			if (*width == 0)
-				*width = i;
-			(*height)++;
+			if ((*game)->width == 0)
+				(*game)->width = i;
+			((*game)->height)++;
 		}
 		i++;
 	}
@@ -63,13 +61,6 @@ static void	get_with_and_height(t_game **game, int *width, int *height)
 
 void	ft_check_map(t_game *game)
 {
-	int	width;
-	int	height;
-
-	width = 0;
-	height = 0;
-	get_with_and_height(&game, &width, &height);
-	game->width = width;
-	game->height = height;
+	get_with_and_height(&game);
 	check_square(&game);
 }
