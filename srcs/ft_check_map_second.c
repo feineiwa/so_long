@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/28 18:03:08 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:34:31 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,37 @@ static void	wall_extremities(t_game *game)
 	}
 }
 
+int	get_index()
+
+void	dfs(char *tmp, int x, int y, int width, int height,
+	int *found_ext, int *collected)
+{
+	int	index;
+
+	if (x < 0 || x >= width || y < 0 || y >= height)
+		return ;
+	index = get_index()
+}
+
+static int	check_path_validity(t_game *game)
+{
+	char	*tmp;
+	int		found_exit;
+	int		collected;
+
+	tmp = ft_strdup(game->map);
+	found_exit = 0;
+	collected = game->player.item_count;
+	dfs(tmp, game->player.x, game->player.y, game->width, game->height,
+		&found_exit, &collected);
+	free(tmp);
+	return (found_exit && (collected == 0));
+}
+
 void	ft_check_map_second(t_game *game)
 {
 	count_cell(game);
 	wall_extremities(game);
+	if (!check_path_validity(game))
+		free_map_error(game);
 }
