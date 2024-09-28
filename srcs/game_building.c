@@ -6,16 +6,11 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/27 17:03:53 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:34:58 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-char	ft_get_cell(char *map, int width, int in_x, int in_y)
-{
-	return (map[in_y * (width + 1) + in_x]);
-}
 
 static void	put_image(char cell, t_image *image, void **img)
 {
@@ -93,5 +88,6 @@ void	game_building(t_game *game)
 	load_images(game);
 	draw_map(game);
 	mlx_key_hook(game->vars.win, control_keys, game);
+	mlx_hook(game->vars.win, 17, 0, close_windows, game);
 	mlx_loop(game->vars.mlx);
 }

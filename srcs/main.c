@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 07:58:16 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/27 17:53:29 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/28 18:20:24 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	init_nodes_to_null(t_game *game)
 	game->map = NULL;
 	game->player.exit_count = 0;
 	game->player.item_count = 0;
+	game->player.move_count = 0;
 	game->player.x = 0;
 	game->player.y = 0;
 	game->vars.mlx = NULL;
@@ -39,7 +40,6 @@ int	main(int ac, char **av)
 		map_not_readable(&game);
 	ft_check_map_first(&game);
 	ft_check_map_second(&game);
-	// init_games(&game);
 	game_building(&game);
 	free(game.map);
 	return (0);

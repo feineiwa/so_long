@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:59:47 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/27 17:28:57 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/28 15:34:59 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	valid_extension(char *str)
 void	map_not_readable(t_game *game)
 {
 	printf("%s \n", strerror(2));
-	free(game->map);
-	exit(1);
+	free_map_error(game);
 }
 
 void	min_width_and_height(t_game *game)
@@ -37,6 +36,11 @@ void	min_width_and_height(t_game *game)
 		printf("width should be more than 4\n");
 	if (game->height < 3)
 		printf("height should be more than 2");
+	free_map_error(game);
+}
+
+void	free_map_error(t_game *game)
+{
 	free(game->map);
 	exit(1);
-}	
+}
