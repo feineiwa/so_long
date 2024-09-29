@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 14:50:15 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 00:21:11 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:57:22 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	exit_game(t_game *game)
 	mlx_destroy_image(game->vars.mlx, game->image.item);
 	mlx_destroy_image(game->vars.mlx, game->image.player);
 	mlx_destroy_image(game->vars.mlx, game->image.wall);
+	mlx_destroy_image(game->vars.mlx, game->image.open);
 	mlx_destroy_window(game->vars.mlx, game->vars.win);
 	mlx_destroy_display(game->vars.mlx);
 	free(game->vars.mlx);

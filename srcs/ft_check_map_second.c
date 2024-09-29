@@ -6,14 +6,12 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 02:48:11 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:59:33 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	dx[] = {0, 0, 1, -1};
-int dy[] = {1, -1, 0, 0};
 
 static void	count_cell(t_game *game)
 {
@@ -75,56 +73,73 @@ static void	wall_extremities(t_game *game)
 	}
 }
 
-int	get_index(int x, int y, int witdh)
+int	get_index(int x, int y, int width)
 {
 	int	index;
 
-	index = y * (witdh + 1) * x;
+	index = y * (width + 1) + x;
 	return (index);
-
+}
+int	is_movable(t_game *game_c)
+{
+	if (ft_get_cell(game_c->map, game_c->width,
+			game_c->player.x, game_c->player.y) == CELL_ITEM)
+		return (1);
+	else if (ft_get_cell(game_c->map, game_c->width,
+			game_c->player.x, game_c->player.y) == CELL_EXIT)
+		return (1);
+	else if (ft_get_cell(game_c->map, game_c->width,
+			game_c->player.x, game_c->player.y) == CELL_FLOOR)
+		return (1);
+	return (0);
 }
 
-
-void	dfs(char *tmp, int x, int y, int width, int height,
-		int *found_exit, int *collected)
+void	dfs(t_game *game_c, int x, int y, t_count *count)
 {
-	int	index;
-	int	i;
+	t_cell	nextcell;
 
-	if (x < 0 || x >= width || y < 0 || y >= height)
+	if (x < 0 || y < 0 || x >= game_c->width || y >= game_c->height)
 		return ;
-	index = get_index(x, y, width);
-	if (tmp[index] == CELL_EXIT)
-		*found_exit = 1;
-	if (tmp[index] == CELL_ITEM)
-		(*collected)--;
-	tmp[index] = CELL_WALL;
-	i = 0;
-	while (i < 4)
-	{
-		dfs(tmp, x + dx[i], y + dy[i], width, height, found_exit, collected);
-	}
+	nextcell = ft_get_cell(game_c->map, game_c->width, x, y);
+	if (nextcell == CELL_ITEM)
+		count->item--;
+	if (!ft_is_in(nextcell, CELL_MOVABLE))
+		return ;
+	cell_set(game_c, x, y, CELL_PLAYER);
+	dfs(game_c, x - 1, y, count);
+	dfs(game_c, x, y - 1, count);
+	dfs(game_c, x, y + 1, count);
+	dfs(game_c, x + 1, y, count);
+	if (nextcell == CELL_EXIT && !count->item)
+		count->exit--;
 }
 
 int	check_path_validity(t_game *game)
 {
-	char	*tmp;
-	int		found_exit;
-	int		collected;
+	t_game	game_c;
+	t_count	count;
 
-	tmp = ft_strdup(game->map);
-	found_exit = 0;
-	collected = game->player.item_count;
-	dfs(tmp, game->player.x, game->player.y, game->width, game->height,
-		&found_exit, &collected);
-	free(tmp);
-	return (found_exit && (collected == 0));
+	game_c.height = game->height;
+	game_c.width = game->width;
+	game_c.map = ft_strdup(game->map);
+	game_c.player.x = game->player.x;
+	game_c.player.y = game->player.y;
+	count.exit = game->player.exit_count;
+	count.item = game->player.item_count;
+	dfs(&game_c, game_c.player.x + 1, game_c.player.y, &count);
+	dfs(&game_c, game_c.player.x - 1, game_c.player.y, &count);
+	dfs(&game_c, game_c.player.x, game_c.player.y + 1, &count);
+	dfs(&game_c, game_c.player.x, game_c.player.y - 1, &count);
+	free(game_c.map);
+	if (count.exit <= 0 && count.item <= 0)
+		return (1);
+	return (0);
 }
 
 void	ft_check_map_second(t_game *game)
 {
 	count_cell(game);
 	wall_extremities(game);
-	// if (!check_path_validity(game))
-	// 	free_map_error(game);
+	if (!check_path_validity(game))
+		free_map_error(game);
 }

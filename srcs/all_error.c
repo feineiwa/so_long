@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:59:47 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/28 15:34:59 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/29 13:26:15 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	valid_extension(char *str)
 	int	len;
 
 	len = ft_strlen(str);
+	if ((!ft_strncmp(str + (len - 4), EXT, 4) && (str[len - 5] == '/'
+				|| len == 4)))
+	{
+		printf("please try to correct the file name\n");
+		exit(1);
+	}
 	if (ft_strncmp(str + (len - 4), EXT, 4))
 	{
 		printf("please put .ber as an extention\n");
