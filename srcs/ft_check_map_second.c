@@ -6,11 +6,14 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 02:34:31 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:48:11 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
 
 static void	count_cell(t_game *game)
 {
@@ -72,19 +75,38 @@ static void	wall_extremities(t_game *game)
 	}
 }
 
-int	get_index()
-
-void	dfs(char *tmp, int x, int y, int width, int height,
-	int *found_ext, int *collected)
+int	get_index(int x, int y, int witdh)
 {
 	int	index;
 
-	if (x < 0 || x >= width || y < 0 || y >= height)
-		return ;
-	index = get_index()
+	index = y * (witdh + 1) * x;
+	return (index);
+
 }
 
-static int	check_path_validity(t_game *game)
+
+void	dfs(char *tmp, int x, int y, int width, int height,
+		int *found_exit, int *collected)
+{
+	int	index;
+	int	i;
+
+	if (x < 0 || x >= width || y < 0 || y >= height)
+		return ;
+	index = get_index(x, y, width);
+	if (tmp[index] == CELL_EXIT)
+		*found_exit = 1;
+	if (tmp[index] == CELL_ITEM)
+		(*collected)--;
+	tmp[index] = CELL_WALL;
+	i = 0;
+	while (i < 4)
+	{
+		dfs(tmp, x + dx[i], y + dy[i], width, height, found_exit, collected);
+	}
+}
+
+int	check_path_validity(t_game *game)
 {
 	char	*tmp;
 	int		found_exit;
@@ -103,6 +125,6 @@ void	ft_check_map_second(t_game *game)
 {
 	count_cell(game);
 	wall_extremities(game);
-	if (!check_path_validity(game))
-		free_map_error(game);
+	// if (!check_path_validity(game))
+	// 	free_map_error(game);
 }
