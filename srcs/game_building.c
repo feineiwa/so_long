@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/02 23:19:59 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/06 23:39:36 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,17 @@ static void	load_images(t_game *game)
 	int	y;
 
 	game->image.floor = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/floor.xpm", &x, &y);
+			"./assets/floor.xpm", &x, &y);
 	game->image.exit = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/exit.xpm", &x, &y);
+			"./assets/exit.xpm", &x, &y);
 	game->image.item = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/item.xpm", &x, &y);
+			"./assets/item.xpm", &x, &y);
 	game->image.player = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/player.xpm", &x, &y);
+			"./assets/player.xpm", &x, &y);
 	game->image.wall = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/wall.xpm", &x, &y);
+			"./assets/wall.xpm", &x, &y);
 	game->image.open = mlx_xpm_file_to_image(game->vars.mlx,
-			"../assets/open.xpm", &x, &y);
+			"./assets/open.xpm", &x, &y);
 }
 
 void	game_building(t_game *game)
