@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 01:36:09 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:19:59 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ static void	put_image(char cell, int *item, t_image *image, void **img)
 		*img = image->player;
 	else if (cell == CELL_WALL)
 		*img = image->wall;
+}
+
+static void	ft_display_moves(t_game *game)
+{
+	char	*str;
+
+	mlx_string_put(game->vars.mlx, game->vars.win, 25, 20, 0xFFFFFF, "Moves : ");
+	str = ft_itoa(game->player.move_count);
+	mlx_string_put(game->vars.mlx, game->vars.win, 75, 20, 0xFFFFFF, str);
+	free(str);
 }
 
 void	draw_map(t_game *game)
@@ -54,6 +64,10 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
+	ft_display_moves(game);
+	write (1, "\033[2K\r", 5);
+	ft_putstr_fd("Moves : ", 1);
+	ft_putnbr_fd(game->player.move_count, 1);
 }
 
 static void	load_images(t_game *game)
@@ -94,7 +108,8 @@ void	game_building(t_game *game)
 	}
 	load_images(game);
 	draw_map(game);
-	mlx_key_hook(game->vars.win, control_keys, game);
+	// mlx_key_hook(game->vars.win, control_keys, game);
+	mlx_hook(game->vars.win, 2, 1L<<0, control_keys, game);
 	mlx_hook(game->vars.win, 17, 0, close_windows, game);
 	mlx_loop(game->vars.mlx);
 }

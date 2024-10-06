@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:18:00 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 01:46:06 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:25:36 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	cell_move_player(t_game *game, int x, int y, t_player *player)
 			game->player.item_count--;
 			if (game->player.item_count <= 0)
 				game->player.item_count = 0;
-			game->player.move_count += 1;
 			can_move = 1;
 		}
 		else if (cell_to_move == CELL_FLOOR)
