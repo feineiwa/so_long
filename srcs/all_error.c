@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:59:47 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 16:00:00 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:24:57 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	map_not_readable(t_game *game)
 void	min_width_and_height(t_game *game)
 {
 	if (game->width < 5 || game->height < 3)
-		printf("Error map\n");
+		ft_printf("Error map\n");
 	free_map_error(game);
 }
 
