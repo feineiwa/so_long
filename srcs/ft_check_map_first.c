@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:35:33 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 16:31:33 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 22:46:51 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	check_rectangular(t_game *game)
 				j--;
 			if (j != game->width)
 			{
-				ft_printf("Error map: the map should be rectangular\n");
+				ft_printf("Error\nThe map should be rectangular\n");
 				free_map_error(game);
 			}
 			j = 0;
@@ -75,7 +75,7 @@ static void	check_valid_cell(t_game *game)
 	{
 		if (!valid_cell(game->map[i]))
 		{
-			ft_printf("Error map : Only characters \"0 1 P C\" are allowed\n");
+			ft_printf("Error\nOnly characters \"0 1 P C\" are allowed\n");
 			free_map_error(game);
 		}
 		i++;

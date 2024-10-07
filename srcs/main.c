@@ -6,12 +6,11 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 07:58:16 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 15:08:36 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 22:31:21 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-#include <stdio.h>
 
 static void	init_nodes_to_null(t_game *game)
 {
@@ -33,7 +32,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_printf("%s\n", strerror(22));
+		ft_printf("Error\n%s\n", strerror(22));
 		return (1);
 	}
 	valid_extension(av[1]);

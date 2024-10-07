@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 16:37:39 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 22:51:59 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	count_cell(t_game *game)
 
 	i = 0;
 	count_p = 0;
-	while (game->map[i++])
+	while (game->map[i])
 	{
 		if (game->map[i] == CELL_PLAYER)
 		{
@@ -27,16 +27,15 @@ static void	count_cell(t_game *game)
 			count_p++;
 		}
 		else if (game->map[i] == CELL_EXIT)
-		{
 			game->player.exit_count += 1;
-		}
 		else if (game->map[i] == CELL_ITEM)
 			game->player.item_count += 1;
+		i++;
 	}
 	if (count_p != 1 || (game->player.exit_count != 1)
 		|| game->player.item_count < 1)
 	{
-		ft_printf("Error map: ['P' == 0, 'E' == 1, 'C' <= 1]\n");
+		ft_printf("Error\nThe map must only have ['P' == 1, 'E' == 1, 'C' <= 1]\n");
 		free_map_error(game);
 	}
 }
@@ -114,7 +113,7 @@ void	ft_check_map_second(t_game *game)
 	wall_extremities(game);
 	if (!check_path_validity(game))
 	{
-		ft_printf("Error map : impossible to finish the game\n");
+		ft_printf("Error\nThis map is not playable\n");
 		free_map_error(game);
 	}
 }
