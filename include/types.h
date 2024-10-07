@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 20:07:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 18:43:30 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 08:02:05 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,5 @@ typedef struct s_game
 	t_player	player;
 	t_image		image;
 }	t_game;
-
-typedef struct s_count
-{
-	int	exit;
-	int	item;
-}	t_count;
 
 #endif

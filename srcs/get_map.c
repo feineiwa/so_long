@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 09:07:26 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/26 08:10:26 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:36:37 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*get_map(char *dir)
 {
-	int	fd;
-	char *line;
-	char *map;
+	int		fd;
+	char	*line;
+	char	*map;
 
 	map = NULL;
 	fd = open(dir, O_RDONLY);

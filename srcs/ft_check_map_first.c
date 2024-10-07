@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:35:33 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/28 15:36:27 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:41:49 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	check_square(t_game *game)
 				j--;
 			if (j != game->width)
 			{
-				printf("the map should be squarred\n");
+				ft_printf("Error map: the map should be squarred\n");
 				free_map_error(game);
 			}
 			j = 0;
@@ -75,7 +75,7 @@ static void	check_valid_cell(t_game *game)
 	{
 		if (!valid_cell(game->map[i]))
 		{
-			printf("one or more invalid character in the map\n");
+			ft_printf("Error map : Only characters \"0 1 P C\" are allowed\n");
 			free_map_error(game);
 		}
 		i++;

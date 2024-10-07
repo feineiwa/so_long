@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:59:47 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/29 13:26:15 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:00:00 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,26 @@ void	valid_extension(char *str)
 	if ((!ft_strncmp(str + (len - 4), EXT, 4) && (str[len - 5] == '/'
 				|| len == 4)))
 	{
-		printf("please try to correct the file name\n");
+		ft_printf("%s\n", strerror(22));
 		exit(1);
 	}
 	if (ft_strncmp(str + (len - 4), EXT, 4))
 	{
-		printf("please put .ber as an extention\n");
+		ft_printf("%s\n", strerror(22));
 		exit(1);
 	}
 }
 
 void	map_not_readable(t_game *game)
 {
-	printf("%s \n", strerror(2));
+	ft_printf("%s \n", strerror(2));
 	free_map_error(game);
 }
 
 void	min_width_and_height(t_game *game)
 {
-	if (game->width < 5)
-		printf("width should be more than 4\n");
-	if (game->height < 3)
-		printf("height should be more than 2");
+	if (game->width < 5 || game->height < 3)
+		printf("Error map\n");
 	free_map_error(game);
 }
 
@@ -49,4 +47,13 @@ void	free_map_error(t_game *game)
 {
 	free(game->map);
 	exit(1);
+}
+
+void	check_extremitties(t_game *game, int x, int y)
+{
+	if (ft_get_cell(game->map, game->width, x, y) != CELL_WALL)
+	{
+		ft_printf("Error map : All extremities should be wall (1)\n");
+		free_map_error(game);
+	}
 }

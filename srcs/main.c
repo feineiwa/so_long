@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 07:58:16 by frahenin          #+#    #+#             */
-/*   Updated: 2024/09/28 22:29:34 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:08:36 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	if (ac != 2)
-		return (0);
+	{
+		ft_printf("%s\n", strerror(22));
+		return (1);
+	}
 	valid_extension(av[1]);
 	init_nodes_to_null(&game);
 	game.map = get_map(av[1]);
@@ -41,6 +44,5 @@ int	main(int ac, char **av)
 	ft_check_map_first(&game);
 	ft_check_map_second(&game);
 	game_building(&game);
-	free(game.map);
 	return (0);
 }

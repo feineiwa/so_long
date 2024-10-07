@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/06 23:39:36 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:23:23 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	ft_display_moves(t_game *game)
 {
 	char	*str;
 
-	mlx_string_put(game->vars.mlx, game->vars.win, 25, 20, 0xFFFFFF, "Moves : ");
+	mlx_string_put(game->vars.mlx, game->vars.win, 25, 20,
+		0xFFFFFF, "Moves : ");
 	str = ft_itoa(game->player.move_count);
 	mlx_string_put(game->vars.mlx, game->vars.win, 75, 20, 0xFFFFFF, str);
 	free(str);
@@ -108,9 +109,7 @@ void	game_building(t_game *game)
 	}
 	load_images(game);
 	draw_map(game);
-	// mlx_key_hook(game->vars.win, control_keys, game);
-	mlx_hook(game->vars.win, 2, 1L<<0, control_keys, game);
+	mlx_hook(game->vars.win, 2, 1L << 0, control_keys, game);
 	mlx_hook(game->vars.win, 17, 0, close_windows, game);
 	mlx_loop(game->vars.mlx);
 }
-

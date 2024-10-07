@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 14:50:15 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/02 23:10:42 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:35:38 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	exit_game(t_game *game)
 	mlx_destroy_window(game->vars.mlx, game->vars.win);
 	mlx_destroy_display(game->vars.mlx);
 	free(game->vars.mlx);
-	// printf("Moves : %d\n", game->player.move_count);
 	exit(0);
 }
 
