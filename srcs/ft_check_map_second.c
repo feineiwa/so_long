@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 15:24:56 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:37:39 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_check_map_second(t_game *game)
 	wall_extremities(game);
 	if (!check_path_validity(game))
 	{
-		ft_printf("Error map : impossible of finishing the game\n");
+		ft_printf("Error map : impossible to finish the game\n");
 		free_map_error(game);
 	}
 }
