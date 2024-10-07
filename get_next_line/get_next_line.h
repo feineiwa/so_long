@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/04 08:56:20 by frahenin          #+#    #+#             */
+/*   Updated: 2024/09/25 09:18:58 by frahenin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
+
+typedef struct s_list
+{
+	char			*content;
+	struct s_list	*next ;
+}	t_list;
+
+char	*get_next_line(int fd);
+void	push_in_stash(t_list **stash, char *buff);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+void	ft_lstclear(t_list **lst);
+int		found_new_line(t_list *stash);
+
+#endif
