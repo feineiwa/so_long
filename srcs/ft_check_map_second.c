@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 23:03:37 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:00:23 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	count_cell(t_game *game)
 	if (count_p != 1 || (game->player.exit_count != 1)
 		|| game->player.item_count < 1)
 	{
-		ft_printf("Error\nThe map must have ['P' == 1, 'E' == 1, 'C' <= 1]\n");
+		ft_printf("Error\nThe map must have ['P' == 1, 'E' == 1, 'C' >= 1]\n");
 		free_map_error(game);
 	}
 }

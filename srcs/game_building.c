@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 22:58:49 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:40:57 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	draw_map(t_game *game)
 		y++;
 	}
 	ft_display_moves(game);
-	write (1, "\033[2K\r", 5);
-	ft_putstr_fd("Moves : ", 1);
+	ft_putstr_fd("\rMoves : ", 1);
 	ft_putnbr_fd(game->player.move_count, 1);
 }
 
