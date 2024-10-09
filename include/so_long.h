@@ -6,29 +6,29 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 20:05:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 15:46:34 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:41:40 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "types.h"
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "../minilibx-linux/mlx.h"
-# include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "types.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 void	valid_extension(char *str);
 char	*get_map(char *dir);
 void	map_not_readable(t_game *game);
 void	free_map_error(t_game *game);
-void	min_width_and_height(t_game *game);
 void	check_extremitties(t_game *game, int x, int y);
+void	check_error_cells(int p, int e, int c, t_game *game);
 
 void	ft_check_map_first(t_game *game);
 void	ft_check_map_second(t_game *game);
@@ -49,5 +49,6 @@ void	move_player_down(t_game *game, t_player player);
 void	move_player_right(t_game *game, t_player player);
 void	move_player_left(t_game *game, t_player player);
 void	cell_move_player(t_game *game, int x, int y, t_player *player);
+void	ft_display_moves(t_game *game);
 
 #endif

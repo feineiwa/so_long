@@ -6,21 +6,16 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/08 08:40:57 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 09:26:08 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	put_image(char cell, int *item, t_image *image, void **img)
+static void	put_image(char cell, t_image *image, void **img)
 {
 	if (cell == CELL_EXIT)
-	{
-		if (*item <= 0)
-			*img = image->open;
-		else
-			*img = image->exit;
-	}
+		*img = image->exit;
 	else if (cell == CELL_FLOOR)
 		*img = image->floor;
 	else if (cell == CELL_ITEM)
@@ -31,7 +26,7 @@ static void	put_image(char cell, int *item, t_image *image, void **img)
 		*img = image->wall;
 }
 
-static void	ft_display_moves(t_game *game)
+void	ft_display_moves(t_game *game)
 {
 	char	*str;
 
@@ -57,7 +52,7 @@ void	draw_map(t_game *game)
 		while (x < game->width)
 		{
 			cell = ft_get_cell(game->map, game->width, x, y);
-			put_image(cell, &game->player.item_count, &game->image, &img);
+			put_image(cell, &game->image, &img);
 			if (img)
 				mlx_put_image_to_window(game->vars.mlx, game->vars.win,
 					img, x * IMAGE_SIZE, y * IMAGE_SIZE);

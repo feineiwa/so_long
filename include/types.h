@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 20:07:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 08:02:05 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:42:09 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ typedef struct s_player
 	int	move_count;
 }	t_player;
 
+typedef struct s_exit
+{
+	int	x;
+	int	y;
+}	t_exit;
+
 typedef struct s_image
 {
 	void	*floor;
@@ -59,6 +65,7 @@ typedef struct s_game
 
 	t_var		vars;
 	t_player	player;
+	t_exit		exit;
 	t_image		image;
 }	t_game;
 

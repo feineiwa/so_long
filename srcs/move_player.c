@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:18:00 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 15:45:02 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 09:49:03 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,31 @@
 
 static void	swift_axis(t_game *game, int x, int y, t_player *player)
 {
+	int	first_moves_on_screen;
+
+	first_moves_on_screen = 0;
 	cell_set(game, player->x, player->y, CELL_FLOOR);
 	cell_set(game, x, y, CELL_PLAYER);
+	game->player.move_count += 1;
+	if (first_moves_on_screen == 0)
+	{
+		mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+			game->image.wall, 2 * IMAGE_SIZE, 0 * IMAGE_SIZE);
+		first_moves_on_screen = 1;
+	}
+	mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->image.floor,
+		player->x * IMAGE_SIZE, player->y * IMAGE_SIZE);
+	mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->image.player,
+		x * IMAGE_SIZE, y * IMAGE_SIZE);
+	if (game->player.item_count <= 0)
+		mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+			game->image.open, game->exit.x * IMAGE_SIZE, game->exit.y
+			* IMAGE_SIZE);
 	game->player.x = x;
 	game->player.y = y;
-	game->player.move_count += 1;
-	draw_map(game);
+	ft_display_moves(game);
+	ft_putstr_fd("\rMoves : ", 1);
+	ft_putnbr_fd(game->player.move_count, 1);
 }
 
 void	cell_move_player(t_game *game, int x, int y, t_player *player)

@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 07:58:16 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/08 08:03:05 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:34:32 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	init_nodes_to_null(t_game *game)
 	game->player.move_count = 0;
 	game->player.x = 0;
 	game->player.y = 0;
+	game->exit.x = 0;
+	game->exit.y = 0;
 	game->vars.mlx = NULL;
 	game->vars.win = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/08 08:00:23 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 09:58:58 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	count_cell(t_game *game)
 	int	i;
 	int	count_p;
 
-	i = 0;
+	i = -1;
 	count_p = 0;
-	while (game->map[i])
+	while (game->map[++i])
 	{
 		if (game->map[i] == CELL_PLAYER)
 		{
@@ -27,17 +27,15 @@ static void	count_cell(t_game *game)
 			count_p++;
 		}
 		else if (game->map[i] == CELL_EXIT)
+		{
 			game->player.exit_count += 1;
+			get_axis(game, CELL_EXIT, &game->exit.x, &game->exit.y);
+		}
 		else if (game->map[i] == CELL_ITEM)
 			game->player.item_count += 1;
-		i++;
 	}
-	if (count_p != 1 || (game->player.exit_count != 1)
-		|| game->player.item_count < 1)
-	{
-		ft_printf("Error\nThe map must have ['P' == 1, 'E' == 1, 'C' >= 1]\n");
-		free_map_error(game);
-	}
+	check_error_cells(count_p, game->player.exit_count,
+		game->player.item_count, game);
 }
 
 static void	wall_extremities(t_game *game)

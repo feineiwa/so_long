@@ -6,13 +6,13 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:35:33 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/07 22:46:51 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:29:21 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	get_with_and_height(t_game *game)
+static void	get_width_and_height(t_game *game)
 {
 	int	i;
 
@@ -38,8 +38,6 @@ static void	check_rectangular(t_game *game)
 
 	i = 0;
 	j = 0;
-	if (game->width < 5 || game->height < 3)
-		min_width_and_height(game);
 	while (game->map[i])
 	{
 		j++;
@@ -84,7 +82,7 @@ static void	check_valid_cell(t_game *game)
 
 void	ft_check_map_first(t_game *game)
 {
-	get_with_and_height(game);
+	get_width_and_height(game);
 	check_rectangular(game);
 	check_valid_cell(game);
 }
