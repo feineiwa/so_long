@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:59:30 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/09 09:58:58 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/10 07:26:10 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	count_cell(t_game *game)
 	int	i;
 	int	count_p;
 
-	i = -1;
+	i = 0;
 	count_p = 0;
-	while (game->map[++i])
+	while (game->map[i])
 	{
 		if (game->map[i] == CELL_PLAYER)
 		{
@@ -33,6 +33,7 @@ static void	count_cell(t_game *game)
 		}
 		else if (game->map[i] == CELL_ITEM)
 			game->player.item_count += 1;
+		i++;
 	}
 	check_error_cells(count_p, game->player.exit_count,
 		game->player.item_count, game);

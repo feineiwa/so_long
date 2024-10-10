@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 20:05:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/09 10:41:40 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/10 07:29:21 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_check_map_second(t_game *game);
 void	game_building(t_game *game);
 int		control_keys(int key, t_game *data);
 int		close_windows(t_game *data);
-void	draw_map(t_game *game);
 
 char	ft_get_cell(char *map, int width, int in_x, int in_y);
 void	cell_set(t_game *game, int in_x, int in_y, char cell);

@@ -6,7 +6,7 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:04:49 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/09 09:26:08 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/10 07:29:17 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_display_moves(t_game *game)
 	free(str);
 }
 
-void	draw_map(t_game *game)
+static void	draw_map(t_game *game)
 {
 	int		x;
 	int		y;

@@ -6,13 +6,13 @@
 /*   By: frahenin <frahenin@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:18:00 by frahenin          #+#    #+#             */
-/*   Updated: 2024/10/09 09:49:03 by frahenin         ###   ########.fr       */
+/*   Updated: 2024/10/10 07:32:11 by frahenin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	swift_axis(t_game *game, int x, int y, t_player *player)
+static void	swift_axis_and_render(t_game *game, int x, int y, t_player *player)
 {
 	int	first_moves_on_screen;
 
@@ -66,6 +66,6 @@ void	cell_move_player(t_game *game, int x, int y, t_player *player)
 			can_move = 1;
 		}
 		if (can_move)
-			swift_axis(game, x, y, player);
+			swift_axis_and_render(game, x, y, player);
 	}
 }
